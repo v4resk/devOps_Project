@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI/CD
 
 on:
   push:
@@ -7,34 +7,31 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
+  # CI part
+  test:
     runs-on: ubuntu-latest
 
+     # Service containers to run with `runner-job`
     services:
-     # Label used to access the service container
-     redis:
-       # Docker Hub image
-       image: redis
-       ports:
-         # Opens tcp port 6379 on the host and service container
-         - 6379:6379
-
+      redis:
+        image: redis
+        ports:
+          # Opens tcp port 6379 on the host and service container
+          - 6379:6379
     strategy:
       matrix:
         node-version: [11.x, 16.x]
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version}}
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
-      - run: npm ci
-      - run: npm test
-
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: '**/package-lock.json'
+    - run: npm ci
+    - run: npm test
   # CD part
   deploy:
     needs: test # Requires CI part to be succesfully completed
@@ -44,7 +41,7 @@ jobs:
       # Read instructions how to configure this action: https://github.com/marketplace/actions/deploy-to-heroku#getting-started
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "YOUR APP's NAME" # Must be unique in Heroku
-          heroku_email: "YOUR EMAIL" # Heroku account email
+          heroku_api_key: ${{9c6d0f74-b479-46bf-81a7-04ed180d7e92}}
+          heroku_app_name: "devops-v4" # Must be unique in Heroku
+          heroku_email: "lucas.heurtin@gmail.com" # Heroku account email
           appdir: userapi # Define appdir if you application is in a subfolder
