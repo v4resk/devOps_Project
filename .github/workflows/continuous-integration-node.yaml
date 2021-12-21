@@ -44,4 +44,3 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "devops-v4" # Must be unique in Heroku
           heroku_email: "lucas.heurtin@gmail.com" # Heroku account email
-          appdir: userapi # Define appdir if you application is in a subfolder
