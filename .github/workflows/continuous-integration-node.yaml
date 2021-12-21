@@ -1,46 +1,50 @@
-name: Redis runner example
-on: push
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  # Label of the runner job
-  runner-job:
-    # You must use a Linux environment when using service containers or container jobs
+  build:
+
     runs-on: ubuntu-latest
 
-    # Service containers to run with `runner-job`
     services:
-      # Label used to access the service container
-      redis:
-        # Docker Hub image
-        image: redis
-        # Set health checks to wait until redis has started
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          # Maps port 6379 on service container to the host
-          - 6379:6379
+     # Label used to access the service container
+     redis:
+       # Docker Hub image
+       image: redis
+       ports:
+         # Opens tcp port 6379 on the host and service container
+         - 6379:6379
+
+    strategy:
+      matrix:
+        node-version: [11.x, 16.x]
 
     steps:
-      # Downloads a copy of the code in your repository before running CI tests
-      - name: Check out repository code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version}}
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+      - run: npm ci
+      - run: npm test
 
-      # Performs a clean installation of all dependencies in the `package.json` file
-      # For more information, see https://docs.npmjs.com/cli/ci.html
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Connect to Redis
-        # Runs a script that creates a Redis client, populates
-        # the client with data, and retrieves data
-        run: node src/dbClient.js
-        # Environment variable used by the `client.js` script to create
-        # a new Redis client.
-        env:
-          # The hostname used to communicate with the Redis service container
-          REDIS_HOST: localhost
-          # The default Redis port
-          REDIS_PORT: 6379
+  # CD part
+  deploy:
+    needs: test # Requires CI part to be succesfully completed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # Read instructions how to configure this action: https://github.com/marketplace/actions/deploy-to-heroku#getting-started
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "YOUR APP's NAME" # Must be unique in Heroku
+          heroku_email: "YOUR EMAIL" # Heroku account email
+          appdir: userapi # Define appdir if you application is in a subfolder
