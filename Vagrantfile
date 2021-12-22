@@ -12,14 +12,14 @@ Vagrant.configure("2") do |config|
 
 
   # Define the  VM
-  config.vm.define "centos_server" do |server|
+  config.vm.define "project_server" do |server|
     # Specify the Vagrant box to use
     server.vm.box = "centos/7"
     # Specify the VM ip address
     server.vm.network :private_network, ip: "192.168.56.2"
     # Specify the VM specs when using the Virtualbox provisioner
     server.vm.provider "virtualbox" do |vb|
-      vb.name =  "centos.server.local"
+      vb.name =  "project.server.local"
       # VM RAM in MB
       vb.memory = 2048
       # VM CPUs
