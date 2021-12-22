@@ -9,3 +9,5 @@
 - name: Print project health
   debug:
     msg: "{{ gitlab_health.content }}"
+
+  # TODO run the test
