@@ -1,12 +1,10 @@
 FROM node:12
 
-WORKDIR /usr/app
+WORKDIR /userapi
 
-COPY userapi/package*.json ./
+COPY userapi/ ./
 
 RUN npm install
-
-COPY userapi/* ./
 
 EXPOSE 8080
 
