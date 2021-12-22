@@ -5,6 +5,7 @@
 
 
   tasks:
+  # Tasks to be executed on these hosts
   - name: Install Node.js and npm.
     yum:
       name: npm
@@ -14,7 +15,7 @@
     yum:
       name: redis
       state: present
-  # Tasks to be executed on these hosts
+  
 
 
   

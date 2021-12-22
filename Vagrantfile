@@ -31,6 +31,9 @@ Vagrant.configure("2") do |config|
     end
   end
 
+  # Config the synced folders
+  config.vm.synced_folder "userapi/", "/vagrant"
+
   # Use Vagrant Ansible provisioner
   config.vm.provision "ansible_local" do |ansible|
   
