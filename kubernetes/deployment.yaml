@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-server
+  labels:
+    application: noderedis
+    component: redis-server
+    type: single
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      application: noderedis
+      component: redis-server
+      type: single
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        application: noderedis
+        component: redis-server
+        type: single
+    spec:
+      containers:
+        - image: redis
+          name: redis-server
+          volumeMounts:
+            - mountPath: /redis-data
+              name: redis-data
+          ports:
+            - containerPort: 6379
+              protocol: TCP
+      volumes:
+        - name: redis-data
+          hostPath:
+            path: /mnt/data
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    application: noderedis
+    component: webservice
+  name: webservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      application: noderedis
+      component: webservice
+  strategy:
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        application: noderedis
+        component: webservice
+        redeploy: '1'
+    spec:
+      containers:
+        - name: webservice
+          image: v4resk/project_devops
+          env:
+          - name: REDIS_HOST
+            value: "redis-server"
+          ports:
+          - name: webservice
+            containerPort: 3000
+            protocol: TCP
