@@ -1,0 +1,20 @@
+---
+- hosts: all
+  # Run commands as root
+  become: yes
+
+
+  tasks:
+  - name: Install Node.js and npm.
+    yum:
+      name: npm
+      state: present
+  
+  - name: Install redis
+    yum:
+      name: redis
+      state: present
+  # Tasks to be executed on these hosts
+
+
+  
