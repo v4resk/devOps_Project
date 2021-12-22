@@ -67,7 +67,7 @@ From the root directory of the project, run:
 npm test
 ```
 
-#Deploy with docker-compose
+# Deploy with docker-compose
 
 From the root directory of the project run:
 
@@ -75,7 +75,7 @@ From the root directory of the project run:
 docker-compose up
 ```
 
-#Deploy with Kubernetes
+# Deploy with Kubernetes
 
 ## 1. Install Minikube
 
