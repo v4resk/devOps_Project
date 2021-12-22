@@ -2,10 +2,15 @@
 
 This is a DevOps project using different tools in order to ensure CI/CD
 
-# WORK DONE
- - lorempsuila
- - lorempsuila
- - lorempsuila
+# Work done
+ - Creation of an API web application with node.js and redis
+ - CI/CD pipeline with GitHub Actions and Heroku
+ - IaC for our app with Vagrant and Ansible
+ - Creation of a Docker image and push it to docker.io repo
+ - Configuration of a docker-compose configuration file to deploy the app with redis
+ - Container orchestration with Kubernetes
+ - Possibility of deploying app with Istio mesh service
+ - Implementation of monitoring tools with Prometheus and Grafana 
 
 # User API web application
 
