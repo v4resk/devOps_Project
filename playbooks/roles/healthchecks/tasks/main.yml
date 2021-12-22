@@ -1,7 +1,7 @@
 ---
 - name: Check project health
   uri:
-    url: http://127.0.0.1/-/health
+    url: http://127.0.0.1:2222/
     return_content: yes
   # Register the output of the module in a variable
   register: project_health

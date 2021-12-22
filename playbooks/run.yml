@@ -10,16 +10,35 @@
     yum:
       name: npm
       state: present
+
+  - name: Install Forever (to run our Node.js app).
+    npm:
+      name: forever
+      global: yes
+      state: present
   
   - name: Install redis
     yum:
       name: redis
       state: present
   
+  # - name: Copy the app
+  #   copy:
+  #     src: userapi
+  #     dest: "vagrant/"
+  
+  - name: Install app dependencies
+    npm:
+      path: "vagrant/userapi"
+
+  #TODO 
+  # - name: Start the app
+  #   command: "forever start vagrant/userapi/index.js"
+  
   # Roles to be executed
-  roles: 
-  - role: healthchecks
-    tags: checks
+  # roles: 
+  # - role: healthchecks
+  #   tags: checks
 
 
   
