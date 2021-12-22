@@ -11,22 +11,18 @@
       name: npm
       state: present
 
-  # - name: Install Forever (to run our Node.js app).
-  #   npm:
-  #     name: forever
-  #     global: yes
-  #     state: present
-
+  - name: Install Forever (to run our Node.js app).
+    npm:
+      name: forever
+      global: yes
+      state: present
+  
   - name: Install redis
     yum:
       name: redis
       state: present
-
-  # - name: Copy the app
-  #   copy:
-  #     src: "./"
-  #     dest: "vagrant/"
-
+  
+  
   - name: Install app dependencies
     npm:
       path: "/userapi"
