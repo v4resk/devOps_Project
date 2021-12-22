@@ -10,7 +10,7 @@ This is a DevOps project using different tools in order to ensure CI/CD
  - Configuration of a docker-compose configuration file to deploy the app with redis
  - Container orchestration with Kubernetes
  - Possibility of deploying app with Istio mesh service
- - Implementation of monitoring tools with Prometheus and Grafana 
+ - Implementation of monitoring tools with Prometheus and Grafana
 
 # User API web application
 
@@ -129,3 +129,11 @@ kubectl apply -f service.yaml
 2. go on [IP]:3000 with your browser
 
   ![minikube_workflow](image/kubectl.png)
+
+# Istio
+
+# Monitoring
+
+# External links
+
+# Authors
