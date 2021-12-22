@@ -1,0 +1,44 @@
+- apiVersion: apps/v1
+  kind: VirtualService
+  ...
+  spec:
+    hosts:
+    - details
+    http:
+    - route:
+      - destination:
+          host: details
+          subset: v1
+- apiVersion: apps/v1
+  kind: VirtualService
+  ...
+  spec:
+    hosts:
+    - productpage
+    http:
+    - route:
+      - destination:
+          host: productpage
+          subset: v1
+- apiVersion: apps/v1
+  kind: VirtualService
+  ...
+  spec:
+    hosts:
+    - ratings
+    http:
+    - route:
+      - destination:
+          host: ratings
+          subset: v1
+- apiVersion: apps/v1
+  kind: VirtualService
+  ...
+  spec:
+    hosts:
+    - reviews
+    http:
+    - route:
+      - destination:
+          host: reviews
+          subset: v1
