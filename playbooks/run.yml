@@ -16,6 +16,10 @@
       name: redis
       state: present
   
+  # Roles to be executed
+  roles: 
+  - role: healthchecks
+    tags: checks
 
 
   
