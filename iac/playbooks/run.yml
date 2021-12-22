@@ -16,29 +16,26 @@
   #     name: forever
   #     global: yes
   #     state: present
-  
+
   - name: Install redis
     yum:
       name: redis
       state: present
-  
+
   # - name: Copy the app
   #   copy:
   #     src: "./"
   #     dest: "vagrant/"
-  
+
   - name: Install app dependencies
     npm:
-      path: "vagrant/userapi"
+      path: "/userapi"
 
-  #TODO 
+  #TODO
   # - name: Start the app
   #   command: "forever start vagrant/userapi/index.js"
-  
+
   # Roles to be executed
-  # roles: 
+  # roles:
   # - role: healthchecks
   #   tags: checks
-
-
-  
