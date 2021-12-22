@@ -27,14 +27,11 @@
     npm:
       path: "/userapi"
 
-  
-  - name: Start the app
-    command: "forever start /home/vagrant/userapi/index.js"
-  
-  #Roles to be executed
-  roles: 
-  - role: healthchecks
-    tags: checks
+  #TODO
+  # - name: Start the app
+  #   command: "forever start vagrant/userapi/index.js"
 
-
-  
+  # Roles to be executed
+  # roles:
+  # - role: healthchecks
+  #   tags: checks
