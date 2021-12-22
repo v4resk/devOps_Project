@@ -2,6 +2,11 @@
 
 This is a DevOps project using different tools in order to ensure CI/CD
 
+# WORK DONE
+ - lorempsuila
+ - lorempsuila
+ - lorempsuila
+
 # User API web application
 
 It is a basic NodeJS web application exposing REST API that creates and stores user parameters in [Redis database](https://redis.io/).
@@ -67,6 +72,14 @@ From the root directory of the project, run:
 npm test
 ```
 
+# Deploy with Vagrant
+
+From the /iac directory of the project run:
+
+```
+vagrant up
+```
+
 # Deploy with docker-compose
 
 From the root directory of the project run:
@@ -108,4 +121,6 @@ kubectl apply -f service.yaml
    ```
    minikube ip
    ```
-2. go on [minikube_ip]:3000 with your browser
+2. go on [IP]:3000 with your browser
+
+  ![minikube_workflow](image/kubectl.png)
