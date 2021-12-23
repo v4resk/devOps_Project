@@ -150,8 +150,8 @@ we don't succed to implement Prometheus and Grafana
 
 # External links
 
-[Docker.io repo](https://hub.docker.com/r/v4resk/project_devops)
-[Heroku repo](https://devops-v4.herokuapp.com/)
+- [Docker.io repo](https://hub.docker.com/r/v4resk/project_devops)
+- [Heroku repo](https://devops-v4.herokuapp.com/)
 
 # Authors
 
