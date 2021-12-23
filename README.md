@@ -85,6 +85,8 @@ From the /iac directory of the project run:
 vagrant up
 ```
 
+![vagrant_workflow](image/vagrant.png)
+
 # Deploy with docker-compose
 
 From the root directory of the project run:
@@ -132,8 +134,26 @@ kubectl apply -f service.yaml
 
 # Istio
 
+[Install Istio](https://istio.io/docs/setup/getting-started/)
+
+From the /istio directory of the project run:
+
+```
+kubectl apply -f root-request.yaml
+```
+```
+kubectl apply -f traffic-managment.yaml
+```
+
 # Monitoring
 
 # External links
 
+[Docker.io repo](https://hub.docker.com/repository/docker/v4resk/project_devops)
+[Heroku repo](https://dashboard.heroku.com/apps/devops-v4)
+
 # Authors
+
+- Maleak Teouri
+- Lucas Heurtin
+- Talib Mrabti
