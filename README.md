@@ -10,7 +10,6 @@ This is a DevOps project using different tools in order to ensure CI/CD
  - Configuration of a docker-compose configuration file to deploy the app with redis
  - Container orchestration with Kubernetes
  - Possibility of deploying app with Istio mesh service
- - Implementation of monitoring tools with Prometheus and Grafana
 
 # User API web application
 
@@ -139,18 +138,20 @@ kubectl apply -f service.yaml
 From the /istio directory of the project run:
 
 ```
-kubectl apply -f root-request.yaml
+kubectl apply -f route-request.yml
 ```
 ```
-kubectl apply -f traffic-managment.yaml
+kubectl apply -f traffic-management.yml
 ```
 
 # Monitoring
 
+we don't succed to implement Prometheus and Grafana
+
 # External links
 
-[Docker.io repo](https://hub.docker.com/repository/docker/v4resk/project_devops)
-[Heroku repo](https://dashboard.heroku.com/apps/devops-v4)
+[Docker.io repo](https://hub.docker.com/r/v4resk/project_devops)
+[Heroku repo](https://devops-v4.herokuapp.com/)
 
 # Authors
 
